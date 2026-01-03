@@ -37,13 +37,13 @@ pip install -r requirements.txt
 It is strongly recommended to run BVA-SAT inside a Python virtual environment to
 avoid dependency conflicts, especially with TensorFlow and scientific libraries.
 
-### Example (Linux / macOS)
+### Example (Linux)
 
 ```bash
 python3 -m venv bva_sat_env
 source bva_sat_env/bin/activate
 pip install -r requirements.txt
-
+```
 
 ##  Dataset Setup & Usage
 
