@@ -15,6 +15,13 @@ BVA-SAT is a comprehensive five-phase framework that integrates CVE-based vulner
 - **CVE Integration**: Maps vulnerabilities to 6 satellite attack categories (DoS, Jamming, Spoofing, Replay, Eavesdropping, MITM)
 - **Behavioral Baselines**: Statistical anomaly detection using 2σ thresholds
 
+## Files Description
+
+- **`bva_sat_implementation.py`**: Main framework implementation with 5-phase assessment pipeline
+- **`bva_sat_benchmark.py`**: Benchmark evaluation script for UNSW-NB15, CIC-IDS2017, and UNSW-IoTSAT datasets
+- **`inventory.yaml`**: Asset inventory configuration for the UNSW-IoTSAT testbed
+- **`requirements.txt`**: Python dependencies
+
 ##  Installation
 ```bash
 # Clone the repository
@@ -25,12 +32,17 @@ cd BVA-SAT-FRAMEWORK
 pip install -r requirements.txt
 ```
 
-## Files Description
+## (Recommended) Python Virtual Environment
 
-- **`bva_sat_implementation.py`**: Main framework implementation with 5-phase assessment pipeline
-- **`bva_sat_benchmark.py`**: Benchmark evaluation script for UNSW-NB15, CIC-IDS2017, and UNSW-IoTSAT datasets
-- **`inventory.yaml`**: Asset inventory configuration for the UNSW-IoTSAT testbed
-- **`requirements.txt`**: Python dependencies
+It is strongly recommended to run BVA-SAT inside a Python virtual environment to
+avoid dependency conflicts, especially with TensorFlow and scientific libraries.
+
+### Example (Linux / macOS)
+
+```bash
+python3 -m venv bva_sat_env
+source bva_sat_env/bin/activate
+pip install -r requirements.txt
 
 
 ##  Dataset Setup & Usage
