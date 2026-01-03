@@ -1,6 +1,6 @@
 # BVA-SAT: Behavioral Vulnerability Assessment Framework for IoT-Based Satellite Security
 
-[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.12%2B-orange)](https://www.tensorflow.org/)
 
 ##  Overview
@@ -144,7 +144,7 @@ Output: Comprehensive Security Assessment
 
 ## Citation
 
-If you use BVA-SAT in your research, The citation will be added once the paper is accepted.
+If you use BVA-SAT in your research, the citation will be added once the paper is accepted.
 
 
 ## Requirements
