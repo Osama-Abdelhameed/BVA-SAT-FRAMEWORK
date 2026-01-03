@@ -32,7 +32,7 @@ cd BVA-SAT-FRAMEWORK
 pip install -r requirements.txt
 ```
 
-## (Recommended) Python Virtual Environment
+## Python Virtual Environment
 
 It is strongly recommended to run BVA-SAT inside a Python virtual environment to
 avoid dependency conflicts, especially with TensorFlow and scientific libraries.
