@@ -32,68 +32,93 @@ pip install -r requirements.txt
 - **`inventory.yaml`**: Asset inventory configuration for the UNSW-IoTSAT testbed
 - **`requirements.txt`**: Python dependencies
 
-## Usage
 
-### Running the Complete Framework
-```python
-# Import the framework
-from bva_sat_implementation import BVASATFramework
+##  Dataset Setup & Usage
 
-# Initialize the framework
-framework = BVASATFramework()
-
-# Phase 1: Asset Discovery
-assets = framework.phase_1_asset_discovery('inventory.yaml')
-print(f"Discovered {len(assets)} assets")
-
-# Phase 2: Vulnerability Scanning
-vulnerabilities = framework.phase_2_vulnerability_scanning()
-print(f"Found {len(vulnerabilities)} vulnerabilities")
-
-# Phase 3: Business Assessment
-risk_assessment = framework.phase_3_business_vulnerability_assessment()
-
-# Phase 4: CVE to Attack Mapping
-attack_mapping = framework.phase_4_vulnerability_remediation()
-
-# Phase 5: Behavioral Analysis
-behavioral_results = framework.phase_5_behavioral_baseline()
+### Required Directory Structure
 ```
+project_folder/
+├── bva_sat_implementation.py
+├── bva_sat_benchmark.py
+├── inventory.yaml
+├── requirements.txt
+├── README.md
+└── data/                    # Create this folder
+    ├── UNSW-NB15/          # Download from UNSW
+    ├── CICDataset/         # Download CIC-IDS2017
+    └── UNSW-IoTSAT/        # Download IoTSAT dataset
 
-### Running Benchmark Evaluation
-```python
-# Run benchmark on a specific dataset
-python bva_sat_benchmark.py
-
-# The script will:
-# 1. Load and preprocess the dataset
-# 2. Train three model architectures
-# 3. Evaluate performance metrics
-# 4. Generate confusion matrices and ROC curves
-```
-
-## Performance Results
-
-| Model | UNSW-NB15 | CIC-IDS2017 | UNSW-IoTSAT |
-|-------|-----------|-------------|-------------|
-| MLP-Standard | 98.78% | 98.64% | 99.94% |
-| MLP-Deep | 98.78% | 98.54% | 99.94% |
-| Attention | 98.78% | **99.29%** | **99.95%** |
-
-## Datasets
+### Step 1: Download Datasets
 
 The framework supports three datasets:
 
 1. **UNSW-NB15**: 2.54M samples, 49 features, network intrusion benchmark
    - Download: [UNSW Website](https://research.unsw.edu.au/projects/unsw-nb15-dataset)
+   - Download all 4 CSV files (UNSW-NB15_1.csv to UNSW-NB15_4.csv)
+   - Download NUSW-NB15_features.csv (column names)
+   - Place in `data/UNSW-NB15/`
 
 2. **CIC-IDS2017**: 2.83M samples, 78 features, enterprise/IoT attacks
    - Download: [UNB Website](https://www.unb.ca/cic/datasets/ids-2017.html)
+   - Download MachineLearningCVE.zip
+   - Extract to `data/CICDataset/MachineLearningCSV/MachineLearningCVE/`
 
 3. **UNSW-IoTSAT**: 0.40M samples, 35 features, satellite telemetry
    - Available: [GitHub](https://github.com/Osama-Abdelhameed/UNSW-IoTSAT)
+   - Download UNSW_IoTSAT_With_Feature_Engineering.csv
+   - Place in `data/UNSW-IoTSAT/`
 
-## 🛰️ Testbed Configuration
+### Step 2: Run the Framework
+
+#### Option A: Default data directory (./data)
+```bash
+python bva_sat_implementation.py
+python bva_sat_benchmark.py
+```
+
+#### Option B: Custom data directory
+```bash
+python bva_sat_implementation.py --data-dir /your/path/to/datasets
+python bva_sat_benchmark.py --data-dir /your/path/to/datasets
+```
+
+#### Option C: Environment variable
+```bash
+export BVA_SAT_DATA_DIR=/your/path/to/datasets
+python bva_sat_implementation.py
+python bva_sat_benchmark.py
+```
+
+### Expected Output
+
+**bva_sat_implementation.py** will:
+1. Load assets from inventory.yaml
+2. Scan for vulnerabilities (uses real CVE data)
+3. Train ML models for vulnerability assessment
+4. Establish behavioral baselines from IoTSAT data
+5. Generate remediation strategies
+
+**bva_sat_benchmark.py** will:
+1. Load all three datasets
+2. Train multiple model variants (standard, deep, attention)
+3. Compare performance across datasets
+4. Save results to `data/bva_sat_results/bva_sat_comparison_results.csv`
+
+### Troubleshooting
+
+If you see "Dataset not found" errors:
+- Check that datasets are in the correct folders
+- Verify file names match exactly (case-sensitive)
+- Use `--data-dir` to specify the correct path
+
+Example error and fix:
+```
+FileNotFoundError: No UNSW-NB15_*.csv files found
+Fix: Ensure UNSW-NB15_1.csv through UNSW-NB15_4.csv are in data/UNSW-NB15/
+```
+```
+
+##  Testbed Configuration
 
 The `inventory.yaml` file describes the UNSW-IoTSAT hardware-in-the-loop testbed:
 
@@ -101,7 +126,7 @@ The `inventory.yaml` file describes the UNSW-IoTSAT hardware-in-the-loop testbed
 - **Satellite Nodes (SAT-01, SAT-02)**: Raspberry Pi 4, BladeRF x40, multiple sensors
 - **Communication Links**: 915-917 MHz, BPSK modulation, CCSDS protocol
 
-## 📐 Framework Architecture
+##  Framework Architecture
 ```
 Phase 1: Asset Discovery
     ↓ (inventory enumeration)
