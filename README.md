@@ -9,8 +9,8 @@ BVA-SAT is a comprehensive five-phase framework that integrates CVE-based vulner
 
 ##  Key Features
 
-- **5-Phase Assessment Pipeline**: Asset Discovery → Vulnerability Scanning → Business Assessment → CVE-to-Attack Mapping → Behavioral Analysis
-- **ML-Based Detection**: Three neural network architectures (MLP-Standard, MLP-Deep, Attention-Based)
+- **Five-Phase Assessment Framework**: Conceptual pipeline covering asset discovery, vulnerability scanning, business assessment, remediation, and behavioral analysis
+- **ML-Based Detection**: Neural networks (standard, deep, attention-based) and classical ML models (Random Forest, Gradient Boosting)
 - **Satellite-Specific Design**: Tailored for IoT satellite telemetry including SNR, throughput, magnetic field, and power metrics
 - **CVE Integration**: Maps vulnerabilities to 6 satellite attack categories (DoS, Jamming, Spoofing, Replay, Eavesdropping, MITM)
 - **Behavioral Baselines**: Statistical anomaly detection using 2σ thresholds
@@ -103,6 +103,8 @@ python bva_sat_benchmark.py
 2. Train multiple model variants (standard, deep, attention)
 3. Compare performance across datasets
 4. Save results to `data/bva_sat_results/bva_sat_comparison_results.csv`
+   
+> **Note:** Reported results depend on dataset versions, preprocessing, and hardware configuration, and may vary across environments.
 
 ### Troubleshooting
 
@@ -142,12 +144,12 @@ Output: Comprehensive Security Assessment
 
 ## Citation
 
-If you use BVA-SAT in your research, we will provide the paper citation once be accepted.
+If you use BVA-SAT in your research, The citation will be added once the paper is accepted.
 
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.9+ (recommended: 3.10 or 3.11)
 - TensorFlow 2.12+
 - See `requirements.txt` for complete list
 
