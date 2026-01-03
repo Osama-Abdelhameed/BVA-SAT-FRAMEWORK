@@ -91,7 +91,7 @@ The framework supports three datasets:
    - Download: [UNB Website](https://www.unb.ca/cic/datasets/ids-2017.html)
 
 3. **UNSW-IoTSAT**: 0.40M samples, 35 features, satellite telemetry
-   - Available: [GitHub][UNSW Website](https://github.com/Osama-Abdelhameed/UNSW-IoTSAT)
+   - Available: [GitHub](https://github.com/Osama-Abdelhameed/UNSW-IoTSAT)
 
 ## 🛰️ Testbed Configuration
 
